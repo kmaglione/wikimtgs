@@ -3,7 +3,7 @@ Trivial script to manage meeting note etherpad to wiki transitions.
 Basic usage:
 
 ```sh
-date=2014-04-01
+date=$(date +%Y-%m-%d)
 
 thing() {
     wikimtgs -uTeamName -pRealStrongPassword \
