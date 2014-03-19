@@ -16,8 +16,8 @@ class WikiMtgs(object):
 
     @property
     def etherpad_export(self):
-        return '%s//ep/pad/export/%s/latest?format=html' % (self.ETHERPAD_SITE,
-                                                            self.etherpad_page)
+        return '%s/ep/pad/export/%s/latest?format=html' % (self.ETHERPAD_SITE,
+                                                           self.etherpad_page)
 
     @property
     def etherpad_template(self):
@@ -55,7 +55,7 @@ class WikiMtgs(object):
         archive  = self.archive_template  % params
 
         text = call('pandoc', '-fhtml', '-tmediawiki',
-                    input=requests.get(export).text)
+                    input=requests.get(export).text.encode('utf-8'))
 
         site.pages[archive].save(
             summary='Archiving meeting notes from %s to wiki' % etherpad,
